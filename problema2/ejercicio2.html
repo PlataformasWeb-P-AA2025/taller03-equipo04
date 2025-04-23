@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario con jQuery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+</head>
+<body>
+
+  <h3>Formulario</h3>
+  <div class="contenedor">
+    <div class="formulario">
+      <p for="nombre">Nombre:</p>
+      <input type="text" id="nombre">
+
+      <p for="apellido">Apellido:</p>
+      <input type="text" id="apellido">
+
+      <p for="fecha">Fecha de Nacimiento:</p>
+      <input type="text" id="fecha">
+
+      <button id="btnGenerar">Generar Mensaje</button>
+    </div>
+
+    <div class="resultados">
+      <h3>Datos Ingresados</h3>
+      <div style="margin-left: 30%;margin-top: 15%;" class="mensaje-datos"></div>
+    </div>
+  </div>
+
+  <script>
+    $(function() {
+      // Activar el datepicker con jQuery UI
+      $('#fecha').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1900:2025",
+        dateFormat: "dd-mm-yy"
+      });
+
+      // Evento del botón usando jQuery
+      $('#btnGenerar').on('click', function() {
+        const nombre = $('#nombre').val();
+        const apellido = $('#apellido').val();
+        const fecha = $('#fecha').val();
+
+        // Mostrar en consola
+        console.log("Nombre:", nombre);
+        console.log("Apellido:", apellido);
+        console.log("Fecha de nacimiento:", fecha);
+
+        // Mostrar en HTML
+        const html = `
+          <p><strong>Nombre:</strong> ${nombre}</p>
+          <p><strong>Apellido:</strong> ${apellido}</p>
+          <p><strong>Fecha de nacimiento:</strong> ${fecha}</p>
+        `;
+        $('.mensaje-datos').html(html);
+      });
+    });
+  </script>
+
+</body>
+</html>

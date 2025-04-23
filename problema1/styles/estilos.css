@@ -1,0 +1,28 @@
+.uno {
+  border: 3px solid navy;            /* Borde exterior azul oscuro */
+  background-color: #ccccff;         /* Fondo lavanda claro */
+  padding: 10px;
+  margin: 20px 50px;
+}
+
+.mensaje {
+  border: 3px solid yellow;          /* Borde amarillo del párrafo */
+  background-color: #f3f3f3;         /* Fondo claro del mensaje */
+  padding: 20px;
+  font-weight: bold;
+  font-size: 2em;
+  margin: 0;
+}
+
+.dos {
+  background-color: #cc8040;         /* Fondo marrón/naranja */
+  margin: 0 50px;
+  padding: 10px;
+}
+
+.comentario {
+  border-bottom: 2px solid green;    /* Línea verde bajo cada comentario */
+  margin: 10px 0;
+  color: white;
+  font-weight: bold;
+}
