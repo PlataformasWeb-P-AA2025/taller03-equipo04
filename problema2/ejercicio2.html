@@ -28,13 +28,13 @@
 
     <div class="resultados">
       <h3>Datos Ingresados</h3>
-      <div style="margin-left: 30%;margin-top: 15%;" class="mensaje-datos"></div>
+      <div style="margin-left: 30%;margin-top: -15%;" class="mensaje-datos"></div>
     </div>
   </div>
 
   <script>
     $(function() {
-      // Activar el datepicker con jQuery UI
+      
       $('#fecha').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -42,7 +42,6 @@
         dateFormat: "dd-mm-yy"
       });
 
-      // Evento del botón usando jQuery
       $('#btnGenerar').on('click', function() {
         const nombre = $('#nombre').val();
         const apellido = $('#apellido').val();
@@ -54,12 +53,7 @@
         console.log("Fecha de nacimiento:", fecha);
 
         // Mostrar en HTML
-        const html = `
-          <p><strong>Nombre:</strong> ${nombre}</p>
-          <p><strong>Apellido:</strong> ${apellido}</p>
-          <p><strong>Fecha de nacimiento:</strong> ${fecha}</p>
-        `;
-        $('.mensaje-datos').html(html);
+        $('.mensaje-datos').html(`<p><strong>Nombre:</strong> ${nombre}</p><p><strong>Apellido:</strong> ${apellido}</p><p><strong>Fecha de nacimiento:</strong> ${fecha}</p>`);
       });
     });
   </script>
