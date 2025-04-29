@@ -23,35 +23,42 @@
 </head>
 <body>
 
-  <h1>Listado de Países desde JSON</h1>
+  <h1>Listado de Países desde JSON usando AJAX</h1>
   <div id="contenedor-paises">Cargando datos...</div>
 
   <script>
     $(document).ready(function() {
       const url = "https://pkgstore.datahub.io/core/country-codes/country-codes_json/data/616b1fb83cbfd4eb6d9e7d52924bb00a/country-codes_json.json";
 
-      $.getJSON(url, function(data) {
-        let html = '';
-        data.forEach(function(pais) {
-          html += `
-            <div class="pais">
-              <h3>${pais["CLDR display name"] || "N/A"}</h3>
-              <p><strong>Capital:</strong> ${pais["Capital"] || "N/A"}</p>
-              <p><strong>FIPS:</strong> ${pais["FIPS"] || "N/A"}</p>
-              <p><strong>FIFA:</strong> ${pais["FIFA"] || "N/A"}</p>
-              <p><strong>Continente:</strong> ${pais["Continent"] || "N/A"}</p>
-              <p><strong>Lenguajes:</strong> ${pais["Languages"] || "N/A"}</p>
-              <p><strong>Geoname ID:</strong> ${pais["Geoname ID"] || "N/A"}</p>
-              <p><strong>Vehículo (Dial o ID internacional):</strong> ${pais["Dial"] || "N/A"}</p>
-            </div>
-          `;
-        });
-        $('#contenedor-paises').html(html);
-      }).fail(function() {
-        $('#contenedor-paises').html('<p style="color:red;">Error al cargar los datos del JSON.</p>');
+      $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "json",
+        success: function(data) {
+          let html = '';
+          data.forEach(function(pais) {
+            html += `
+              <div class="pais">
+                <h3>${pais["CLDR display name"] || "N/A"}</h3>
+                <p><strong>Capital:</strong> ${pais["Capital"] || "N/A"}</p>
+                <p><strong>FIPS:</strong> ${pais["FIPS"] || "N/A"}</p>
+                <p><strong>FIFA:</strong> ${pais["FIFA"] || "N/A"}</p>
+                <p><strong>Continente:</strong> ${pais["Continent"] || "N/A"}</p>
+                <p><strong>Lenguajes:</strong> ${pais["Languages"] || "N/A"}</p>
+                <p><strong>Geoname ID:</strong> ${pais["Geoname ID"] || "N/A"}</p>
+                <p><strong>Vehículo (Dial o ID internacional):</strong> ${pais["Dial"] || "N/A"}</p>
+              </div>
+            `;
+          });
+          $('#contenedor-paises').html(html);
+        },
+        error: function() {
+          $('#contenedor-paises').html('<p style="color:red;">Error al cargar los datos del JSON.</p>');
+        }
       });
     });
   </script>
 
 </body>
 </html>
+
